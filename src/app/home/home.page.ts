@@ -42,8 +42,9 @@ export class HomePage {
         console.error('Error recuperando altura: ' + error);
       });
 
+      // Query para pasos en las últimas 24 horas
       let stepOptions = {
-        startDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+        startDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000), // Fecha de hoy, le resto un día.
         endDate: new Date(),
         unit: 'count',
         sampleType: 'HKQuantityTypeIdentifierStepCount'
