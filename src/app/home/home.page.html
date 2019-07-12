@@ -1,14 +1,50 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Prueba HealthKit
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-item>
+    <ion-label stacked>
+      Introduce tu Altura
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="height" placeholder="Altura en cm"> 
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      Altura
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="heightActual" readonly> 
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      Pasos en las últimas 24h
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="steps" readonly> 
+    </ion-input>
+  </ion-item>
+
+  <ion-button color="primary" expand="full" (click)="guardaAltura()">Guardar altura</ion-button>
+  <ion-button color="secondary" expand="full" (click)="guardaWorkout()">Guardar Workout</ion-button>
+
+  <ion-list>
+    <ion-card *ngFor="let workout of workouts">
+      <ion-card-header>
+       {{ workout.calories }} 
+      </ion-card-header>
+      <ion-card-content>
+        <p>Actividad: {{ workout.activityType }}</p>
+        <p>Duracion: {{ workout.duration / 60 }} min</p>
+        <p>Fecha: {{ workout.startDate | date: 'short' }}</p>
+        <p>Distancia: {{ workout.miles / 0.62137 }} Kms</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
